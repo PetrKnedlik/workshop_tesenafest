@@ -19,13 +19,5 @@ pipeline {
             bat 'npm run build'
       }
     }
-    stage('Deploy') {
-        when {
-          expression {"$env.GIT_BRANCH" == "origin/master"}
-        }
-          steps {
-            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
-          }
-        }
   }
 }
